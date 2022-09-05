@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from "tsyringe";
 
-import { Specification } from "@modules/cars/entities/Specification";
+import { Specification } from "@modules/cars/infra/typeorm/entities/Specification";
 import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
 
 @injectable()
