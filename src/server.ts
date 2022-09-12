@@ -1,17 +1,21 @@
+/* eslint-disable import-helpers/order-imports */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "reflect-metadata";
 import express, { Request, Response, NextFunction, response } from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
-import "./database";
-import "@shared/container";
 import { AppError } from "@errors/AppError";
+
+import createConnection from "./database";
+
+import "@shared/container";
 
 import { router } from "./routes";
 import swaggerFile from "./swagger.json";
 
 const port = 3333;
+createConnection();
 const app = express();
 
 app.use(express.json());
