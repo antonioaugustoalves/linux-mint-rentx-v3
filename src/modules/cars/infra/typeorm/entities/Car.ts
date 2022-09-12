@@ -21,7 +21,7 @@ class Car {
   description!: string;
   @Column()
   daily_rate!: number;
-  @Column()
+  @Column({ type: "boolean" })
   avaliable = true;
   @Column()
   license_plate!: string;
