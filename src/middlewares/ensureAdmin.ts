@@ -16,5 +16,5 @@ export async function ensureAdmin(
     throw new AppError("You are not logged as admnistrator");
   }
 
-  return next;
+  return next();
 }
