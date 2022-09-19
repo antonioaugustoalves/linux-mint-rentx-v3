@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 

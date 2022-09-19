@@ -9,7 +9,7 @@ class ListCarsController {
 
     const listCarsUseCase = container.resolve(ListCarsUseCase);
 
-    const cars = listCarsUseCase.execute({
+    const cars = await listCarsUseCase.execute({
       brand: brand as string,
       name: name as string,
       category_id: category_id as string,
