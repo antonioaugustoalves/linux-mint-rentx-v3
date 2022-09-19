@@ -16,10 +16,6 @@ specificationsRoutes.post(
   createSpecificationController.handle
 );
 
-specificationsRoutes.get(
-  "/",
-  ensureAuthetication,
-  listSpecificationsController.handle
-);
+specificationsRoutes.get("/", listSpecificationsController.handle);
 
 export { specificationsRoutes };

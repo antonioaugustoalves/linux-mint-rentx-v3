@@ -5,12 +5,12 @@ import createConnection from "../../../../database";
 
 async function create() {
   const connection = await createConnection("localhost");
-  const password = await hash("admin1234", 8);
+  const password = await hash("2312", 8);
   const id = uuidv4();
 
   await connection.query(
     `INSERT INTO USERS (id, name, email, password, driver_license, "isAdmin", created_at)
-        VALUES('${id}', 'admin', 'antonio.alves81@gmail.com', '${password}', 'B', true, 'now()')`
+        VALUES('${id}', 'admin', 'antonio@rentx.com', '${password}', 'B', true, 'now()')`
   );
   await connection.close();
 }
