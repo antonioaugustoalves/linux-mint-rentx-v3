@@ -10,6 +10,18 @@ describe("List All cars", () => {
     listCarsUseCase = new ListCarsUseCase(carsRepositoryInMemory);
   });
   it("Should be able to list all avaliable cars", async () => {
-    await listCarsUseCase.execute();
+    const car = await carsRepositoryInMemory.create({
+      name: "Carro de Teste ",
+      description: "Carro de teste ",
+      daily_rate: 600.0,
+      license_plate: "IHX5-G99",
+      fine_amount: 200.0,
+      brand: "Pegeout",
+      category_id: "cat_id",
+    });
+    const cars = await listCarsUseCase.execute();
+    expect(cars).toEqual([car]);
   });
+
+  it("Should be able to");
 });
