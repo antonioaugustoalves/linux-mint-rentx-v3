@@ -10,8 +10,8 @@ interface ISpecificationsRepository {
     name,
     description,
   }: ICreateSpecificationDTO): Promise<Specification>;
-  findByName(name: string): Promise<Specification>;
-  findById(id: string): Promise<Specification>;
+  findByName(name: string): Promise<Specification | undefined>;
+  findById(id: string): Promise<Specification | undefined>;
   list(): Promise<Specification[]>;
 }
 
