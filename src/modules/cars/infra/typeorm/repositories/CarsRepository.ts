@@ -61,6 +61,10 @@ class CarsRepository implements ICarsRepository {
     const cars = await carsQuery.getMany();
     return cars;
   }
+
+  findById(id: string): Promise<Car | undefined> {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export { CarsRepository };
