@@ -27,6 +27,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": false,
+    "strictNullChecks": false,
     "skipLibCheck": true
   }
 }
