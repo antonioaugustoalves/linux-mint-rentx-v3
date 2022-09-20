@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { AppError } from "@errors/AppError";
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/inMemory/CarsRepositoryInMemory";
 import { SpecificationsRepositoryInMemory } from "@modules/cars/repositories/inMemory/SpecificationsRepositoryInMemory";
@@ -5,18 +6,18 @@ import { SpecificationsRepositoryInMemory } from "@modules/cars/repositories/inM
 import { CreateCarSpecificationUseCase } from "./CreateCarSpecificationUseCase";
 
 let createCarSpecificationUseCase: CreateCarSpecificationUseCase;
-let carsRepository: CarsRepositoryInMemory;
-let specificationsRepository: SpecificationsRepositoryInMemory;
-describe("Create a car specifications list", () => {
+let carsRepositoryInMemory: CarsRepositoryInMemory;
+
+describe("Create the specifications of an existent car", () => {
   beforeEach(() => {
-    carsRepository = new CarsRepositoryInMemory();
+    carsRepositoryInMemory = new CarsRepositoryInMemory();
     createCarSpecificationUseCase = new CreateCarSpecificationUseCase(
-      carsRepository
+      carsRepositoryInMemory
     );
   });
 
-  it("Should be able to add  specifications  to the car", async () => {
-    const car = await carsRepository.create({
+  it("Should be able to add a specification to a car", async () => {
+    const car = await carsRepositoryInMemory.create({
       name: "Uno Mille",
       description: "Uno Mille ano 94 com escada",
       daily_rate: 100,
@@ -25,22 +26,24 @@ describe("Create a car specifications list", () => {
       brand: "FIAT",
       category_id: "Category",
     });
-    const specification = await specificationsRepository.create({
-      name: "Test specification",
-      description: "This is just a test",
-    });
-    const specifications_id = [specification.id];
-    createCarSpecificationUseCase.execute({
-      car_id: car.id,
+
+    const specifications_id = ["5432"];
+
+    await createCarSpecificationUseCase.execute({
+      car_id: car.id!, // car.id nunca é nulo!
       specifications_id,
     });
   });
 
-  it("Should not  be able to add  specifications if the car does not exist", async () => {
-    await expect(async () => {
-      const car_id = "1234567";
-      const specifications_id = ["12345", "54321"];
-      createCarSpecificationUseCase.execute({ car_id, specifications_id });
+  it("Should not be able to add a specification to an inexistent car", async () => {
+    expect(async () => {
+      const car_id = "1234";
+      const specifications_id = ["5432"];
+
+      await createCarSpecificationUseCase.execute({
+        car_id,
+        specifications_id,
+      });
     }).rejects.toBeInstanceOf(AppError);
   });
 });

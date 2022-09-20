@@ -18,7 +18,7 @@ class SpecificationsRepositoryInMemory implements ISpecificationsRepository {
     this.specifications.push(specification);
     return specification;
   }
-  async findByName(name: string): Promise<Specification | undefined> {
+  async findByName(name: string): Promise<Specification> {
     return this.specifications.find(
       (specification) => specification.name === name
     );
@@ -27,7 +27,7 @@ class SpecificationsRepositoryInMemory implements ISpecificationsRepository {
     throw new Error("Method not implemented.");
   }
 
-  async findById(id: string): Promise<Specification | undefined> {
+  async findById(id: string): Promise<Specification> {
     return this.specifications.find((specification) => specification.id === id);
   }
 }
