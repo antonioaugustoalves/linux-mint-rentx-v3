@@ -29,14 +29,14 @@ class Car {
   @Column()
   license_plate!: string;
   @Column()
-  fine_amount?: number;
+  fine_amount!: number;
   @Column()
   brand!: string;
   @ManyToOne(() => Category)
   @JoinColumn({ name: "category_id" })
   category!: Category;
   @Column()
-  category_id?: string;
+  category_id!: string;
   @CreateDateColumn()
   created_at!: Date;
   @ManyToMany(() => Specification)
