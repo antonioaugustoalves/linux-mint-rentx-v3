@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { ensureAdmin } from "middlewares/ensureAdmin";
-import { ensureAuthetication } from "middlewares/ensureAuthentication";
 import multer from "multer";
 
+import { ensureAdmin } from "../middlewares/ensureAdmin";
+import { ensureAuthetication } from "../middlewares/ensureAuthentication";
 import { CreateCategoryController } from "../modules/cars/useCases/createCategory/CreateCategoryController";
 import { ImportCategoriesController } from "../modules/cars/useCases/importCategories/ImportCategoriesController";
 import { ListCategoriesController } from "../modules/cars/useCases/listCategory/ListCategoriesController";

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Column,
   CreateDateColumn,
@@ -31,7 +32,6 @@ class Rental {
   constructor() {
     if (!this.id) {
       this.id = uuidv4();
-      this.created_at = new Date();
     }
   }
 }

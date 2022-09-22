@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { ensureAdmin } from "middlewares/ensureAdmin";
 
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 import { ensureAuthetication } from "../middlewares/ensureAuthentication";
 import { CreateSpecificationController } from "../modules/cars/useCases/createSpecification/CreateSpecificationController";
 import { ListSpecificationsController } from "../modules/cars/useCases/listSpecification/ListSpecifiationsController";
