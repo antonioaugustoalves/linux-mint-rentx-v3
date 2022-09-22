@@ -6,11 +6,11 @@ import { v4 as uuidv4 } from "uuid";
 import { app } from "../../../../app";
 import createConnection from "../../../../database/index";
 
-let connection: Connection;
 describe("Testing ListCategoryController", () => {
+  let connection: Connection;
   beforeAll(async () => {
-    await connection.runMigrations();
     connection = await createConnection();
+    await connection.runMigrations();
     const password = await hash("2312", 8);
     const id = uuidv4();
 
@@ -31,7 +31,7 @@ describe("Testing ListCategoryController", () => {
       password: "2312",
     });
 
-    console.log(responseToken);
+    console.log(responseToken.body);
 
     const response = await request(app).post("/categories").send({
       name: " Category name test",
