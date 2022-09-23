@@ -8,6 +8,6 @@ const rentalRoutes = Router();
 
 const createRentalController = new CreateRentalController();
 
-rentalRoutes.post("/", createRentalController.handle);
+rentalRoutes.post("/", ensureAuthetication, createRentalController.handle);
 
 export { rentalRoutes };
