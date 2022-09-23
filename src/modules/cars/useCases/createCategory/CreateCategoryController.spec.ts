@@ -30,13 +30,14 @@ describe("Testing ListCategoryController", () => {
       email: "antonio@rentx.com",
       password: "2312",
     });
-
-    console.log(responseToken.body);
-
-    const response = await request(app).post("/categories").send({
-      name: " Category name test",
-      description: "Test description",
-    });
+    const { token } = responseToken.body;
+    const response = await request(app)
+      .post("/categories")
+      .send({
+        name: " Category name test",
+        description: "Test description",
+      })
+      .set({ Authorization: `Bearer${token}` });
     expect(response.status).toBe(201);
   });
 });
