@@ -37,7 +37,7 @@ describe("Testing ListCategoryController", () => {
         name: " Category name test",
         description: "Test description",
       })
-      .set({ Authorization: `Bearer${token}` });
+      .set({ Authorization: `Bearer ${token}` });
     expect(response.status).toBe(201);
   });
 });
